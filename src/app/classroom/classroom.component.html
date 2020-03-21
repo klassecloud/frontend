@@ -11,36 +11,45 @@
   </div>
 </div>
 
-<div class="container">
+<div class="container test">
   <div class="border">
-    <img class="img-fluid worksheet" src="https://picsum.photos/1920/960">
+    <img class="img-fluid worksheet" src="https://heterogenitaet.bildung-rp.de/fileadmin/_migrated/RTE/RTEmagicC_Beispiel_Mathe.PNG.png">
+    <div [hidden]="activeQuestion" class="hiddenContainer">
+      <div class="hiddenDiv bg-light text-center">
+        <h3>Frage?</h3>
+        <input type="text">
+        <div class="text-right mt-2">
+          <button class="btn-success">Absenden</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
 <div class="container">
   <div class="border d-flex justify-content-around">
-    <fa-icon [icon]="arrowLeft"></fa-icon>
-    <fa-icon class="text-warning" [icon]="circle"></fa-icon>
-    <fa-icon class="text-success" [icon]="circle"></fa-icon>
-    <fa-icon [icon]="arrowRight"></fa-icon>
+    <button class="btn"><fa-icon [icon]="arrowLeft"></fa-icon></button>
+    <button class="btn"><fa-icon class="text-danger" [icon]="circle"></fa-icon></button>
+    <button class="btn" (click)="showQuestion()"><fa-icon class="text-warning" [icon]="circle"></fa-icon></button>
+    <button class="btn"><fa-icon class="text-success" [icon]="circle"></fa-icon></button>
+    <button class="btn"><fa-icon [icon]="arrowRight"></fa-icon></button>
   </div>
 </div>
-<!--
+
 <div class="container">
   <ul class="nav nav-tabs nav-stacked">
     <li class="nav-item">
-      <button class="nav-link active" (click)=showFiles()>Dateien</button>
+      <button class="nav-link tabFiles active" (click)=showFiles()>Dateien</button>
     </li>
     <li class="nav-item">
-      <button class="nav-link" (click)=showMessages()>Chat</button>
-      <button class="nav-link" (click)="messageShow = !messageShow" [attr.aria-expanded]="messageShow">Chat</button>
+      <button class="nav-link tabChat" (click)=showMessages()>Chat</button>
     </li>
     <li class="nav-item">
-      <button class="nav-link">Lehrer</button>
+      <button class="nav-link tabTeacher" (click)="showTeacher()">Lehrer</button>
     </li>
   </ul>
 </div>
--->
+
 <div class="container" *ngIf="filesActive">
   <ul class="list-group file-list">
     <li class="list-group-item list-group-item-action" *ngFor="let file of files">{{ file }}</li>
@@ -49,6 +58,12 @@
 
 <div class="container" *ngIf="messagesActive">
   <ul class="list-group file-list">
-    <li class="list-group-item list-group-item-action" *ngFor="let message of messages">{{ message }}</li>
+    <li class="list-group-item list-group-item-action" *ngFor="let message of publicMessages">{{ message }}</li>
+  </ul>
+</div>
+
+<div class="container" *ngIf="teacherActive">
+  <ul class="list-group file-list">
+    <li class="list-group-item list-group-item-action" *ngFor="let message of privateMessages">{{ message }}</li>
   </ul>
 </div>

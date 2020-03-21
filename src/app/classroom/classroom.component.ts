@@ -15,27 +15,51 @@ export class ClassroomComponent implements OnInit {
   arrowRight = faArrowRight;
   circle = faCircle;
   files = ['File1', 'File2', 'File3'];
-  filesActive = false;
-  messages = ['Message1', 'Message2', 'Message3'];
+  filesActive = true;
+  publicMessages = ['Message1', 'Message2', 'Message3'];
+  privateMessages = ['Private Nachricht', '1Mehr Private NAchrichten', 'Viel mehr Private NAchrichten'];
   messagesActive = false;
   teacherActive = false;
+  activeQuestion = true;
 
-  /*
-  showFiles() {
-    // tslint:disable-next-line:triple-equals
-    this.filesActive != true ? this.checkShow() : this.filesActive = false;
-  }
 
-  showMessages() {
-    // tslint:disable-next-line:triple-equals
-    this.messagesActive != true ? this.messagesActive = true : this.messagesActive = false;
-  }
 
-  showTeacher() {
-    // tslint:disable-next-line:triple-equals
-    this.teacherActive != true ? this.teacherActive = true : this.teacherActive = false;
+showFiles() {
+  if(this.filesActive != true) {
+    document.querySelector('.tabFiles').classList.add('class', 'active');
+    document.querySelector('.tabTeacher').classList.remove('class', 'active');
+    document.querySelector('.tabChat').classList.remove('class', 'active');
+    this.filesActive = true;
+    this.messagesActive = false;
+    this.teacherActive = false;
   }
-*/
+}
+
+showMessages() {
+  if(this.messagesActive != true) {
+    document.querySelector('.tabChat').classList.add('class', 'active');
+    document.querySelector('.tabFiles').classList.remove('class', 'active');
+    document.querySelector('.tabTeacher').classList.remove('class', 'active');
+    this.messagesActive = true;
+    this.filesActive = false;
+    this.teacherActive = false;
+  }
+}
+
+showTeacher() {
+  if (this.teacherActive != true) {
+    document.querySelector('.tabTeacher').classList.add('class', 'active');
+    document.querySelector('.tabFiles').classList.remove('class', 'active');
+    document.querySelector('.tabChat').classList.remove('class', 'active');
+    this.teacherActive = true;
+    this.filesActive = false;
+    this.messagesActive = false;
+  }
+}
+
+showQuestion() {
+  this.activeQuestion = !this.activeQuestion;
+}
 
   constructor() { }
 
