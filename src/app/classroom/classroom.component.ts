@@ -15,10 +15,27 @@ export class ClassroomComponent implements OnInit {
   arrowRight = faArrowRight;
   circle = faCircle;
   files = ['File1', 'File2', 'File3'];
-  filesShow = true;
+  filesActive = false;
   messages = ['Message1', 'Message2', 'Message3'];
-  messageShow = false;
+  messagesActive = false;
+  teacherActive = false;
 
+  /*
+  showFiles() {
+    // tslint:disable-next-line:triple-equals
+    this.filesActive != true ? this.checkShow() : this.filesActive = false;
+  }
+
+  showMessages() {
+    // tslint:disable-next-line:triple-equals
+    this.messagesActive != true ? this.messagesActive = true : this.messagesActive = false;
+  }
+
+  showTeacher() {
+    // tslint:disable-next-line:triple-equals
+    this.teacherActive != true ? this.teacherActive = true : this.teacherActive = false;
+  }
+*/
 
   constructor() { }
 

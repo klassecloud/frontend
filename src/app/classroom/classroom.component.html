@@ -25,28 +25,29 @@
     <fa-icon [icon]="arrowRight"></fa-icon>
   </div>
 </div>
-
+<!--
 <div class="container">
   <ul class="nav nav-tabs nav-stacked">
     <li class="nav-item">
-      <button class="nav-link active">Dateien</button>
+      <button class="nav-link active" (click)=showFiles()>Dateien</button>
     </li>
     <li class="nav-item">
-      <button class="nav-link">Chat</button>
+      <button class="nav-link" (click)=showMessages()>Chat</button>
+      <button class="nav-link" (click)="messageShow = !messageShow" [attr.aria-expanded]="messageShow">Chat</button>
     </li>
     <li class="nav-item">
       <button class="nav-link">Lehrer</button>
     </li>
   </ul>
 </div>
-
-<div class="container" *ngIf="filesShow">
+-->
+<div class="container" *ngIf="filesActive">
   <ul class="list-group file-list">
     <li class="list-group-item list-group-item-action" *ngFor="let file of files">{{ file }}</li>
   </ul>
 </div>
 
-<div class="container" *ngIf="messageShow">
+<div class="container" *ngIf="messagesActive">
   <ul class="list-group file-list">
     <li class="list-group-item list-group-item-action" *ngFor="let message of messages">{{ message }}</li>
   </ul>
