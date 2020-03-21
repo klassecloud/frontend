@@ -70,7 +70,7 @@ showSubmit() {
   }
 
 showCancel() {
-    this.activeCancel = !this.activeCancel;
+  this.activeCancel = !this.activeCancel;
   }
 
   constructor() { }
