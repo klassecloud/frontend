@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="text-center">
+    <h2>Klasse XYZ</h2>
+    Fach
+  </div>
+</div>
+
+<div class="container d-flex border col-2 justify-content-center">
+  <div class="row align-self-center">
+    00:00
+  </div>
+</div>
+
+<div class="container">
+  <div class="border">
+    <img class="img-fluid worksheet" src="https://picsum.photos/1920/960">
+  </div>
+</div>
+
+<div class="container">
+  <div class="border d-flex justify-content-around">
+    <fa-icon [icon]="arrowLeft"></fa-icon>
+    <fa-icon class="text-warning" [icon]="circle"></fa-icon>
+    <fa-icon class="text-success" [icon]="circle"></fa-icon>
+    <fa-icon [icon]="arrowRight"></fa-icon>
+  </div>
+</div>
+
+<div class="container">
+  <ul class="nav nav-tabs nav-stacked">
+    <li class="nav-item">
+      <button class="nav-link active">Dateien</button>
+    </li>
+    <li class="nav-item">
+      <button class="nav-link">Chat</button>
+    </li>
+    <li class="nav-item">
+      <button class="nav-link">Lehrer</button>
+    </li>
+  </ul>
+</div>
+
+<div class="container" *ngIf="filesShow">
+  <ul class="list-group file-list">
+    <li class="list-group-item list-group-item-action" *ngFor="let file of files">{{ file }}</li>
+  </ul>
+</div>
+
+<div class="container" *ngIf="messageShow">
+  <ul class="list-group file-list">
+    <li class="list-group-item list-group-item-action" *ngFor="let message of messages">{{ message }}</li>
+  </ul>
+</div>
