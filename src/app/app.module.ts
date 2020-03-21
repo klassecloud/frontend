@@ -8,13 +8,15 @@ import { LoginComponent } from './login/login.component';
 import { ClassroomComponent } from './classroom/classroom.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {FormsModule} from '@angular/forms';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
    declarations: [
       AppComponent,
       HomeComponent,
       LoginComponent,
-      ClassroomComponent
+      ClassroomComponent,
+      RegisterComponent
    ],
   imports: [
     BrowserModule,

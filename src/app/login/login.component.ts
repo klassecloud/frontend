@@ -16,12 +16,13 @@ export class LoginComponent implements OnInit {
    nickname: string;
    password: string;
    username: string;
- }
+ };
 
   onChangeFunction() {
-    if (this.user.username.length > 5)
-      alert(this.user.username);
+   console.log(this.user.username);
   }
+
+
 
   ngOnInit() {
   }
