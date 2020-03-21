@@ -18,13 +18,26 @@ export class LoginComponent implements OnInit {
    username: string;
  };
 
-  onChangeFunction() {
-   console.log(this.user.username);
-  }
-
-
+isPasswordNull: boolean;
+isUsernameNull: boolean;
 
   ngOnInit() {
+  }
+
+  checkPassword(): void {
+    this.isPasswordNull = this.user.password == null;
+  }
+
+  checkUsername(): void {
+    this.isUsernameNull = this.user.username == null;
+  }
+
+  login(): void {
+    this.checkPassword();
+    this.checkUsername();
+    if (!this.isUsernameNull && !this.isPasswordNull) {
+      alert('Hello, World');
+    }
   }
 
 }
