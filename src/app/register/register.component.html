@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+      <div class="card card-signin my-5">
+        <div class="card-body">
+          <h5 class="card-title text-center">Login</h5>
+          <form class="form-register">
+            <div class="form-group">
+              <input [(ngModel)]="user.username" type="text" class="form-control" name="loginUsername" id="loginUsername" aria-describedby="userHelp" placeholder="Benutzername" required (change)="validateUserInput()">
+              <label for="loginUsername">Benutzername</label>
+              <small id="userHelp" class="form-text text-muted">Dein Username wird später nicht angezeigt.</small>
+            </div>
+            <div class="form-group">
+              <input [(ngModel)]="user.nickname" type="text" class="form-control" name="loginUsername" id="userNickname" aria-describedby="nicknameHelp" placeholder="Anzeigename" required>
+              <label for="loginUsername">Anzeigename</label>
+              <small id="nicknameHelp" class="form-text text-muted">Dieser Name wird später angezeigt.</small>
+            </div>
+            <div class="form-group">
+              <input [(ngModel)]="user.password" type="password" name="userPassword" id="inputPassword" class="form-control" placeholder="Password" required [ngModelGroup]="isPasswordLongEnough()"/>
+              <label for="inputPassword">Passwort</label>
+              <p *ngIf=""></p>
+              <input type="password" class="form-control" name="userPasswordRepeat" id="passwordRepeat" placeholder="Passwort wiederholen" required (change)="isPasswordMatching($event)" />
+              <label for="passwordRepeat">Passwort wiederholen</label>
+            </div>
+
+            <div class="custom-control custom-checkbox mb-3">
+              <input type="checkbox" class="custom-control-input" id="customCheck1" checked>
+              <label class="custom-control-label" for="customCheck1">Passwort merken</label>
+            </div>
+            <a *ngIf="validateUserInput()" class="btn btn-lg btn-primary btn-block text-uppercase text-white">Registrieren</a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
