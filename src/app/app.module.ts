@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ClassroomComponent } from './classroom/classroom.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
    declarations: [
@@ -15,11 +16,12 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
       LoginComponent,
       ClassroomComponent
    ],
-   imports: [
-      BrowserModule,
-      AppRoutingModule,
-      FontAwesomeModule
-   ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FontAwesomeModule,
+    FormsModule
+  ],
    providers: [],
    bootstrap: [
       AppComponent

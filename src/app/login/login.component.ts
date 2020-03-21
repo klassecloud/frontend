@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import { User } from '../models/user';
 
 @Component({
   selector: 'app-login',
@@ -8,6 +9,19 @@ import { Component, OnInit } from '@angular/core';
 export class LoginComponent implements OnInit {
 
   constructor() { }
+
+ user: User = new class implements User {
+   email: string;
+   id: number;
+   nickname: string;
+   password: string;
+   username: string;
+ }
+
+  onChangeFunction() {
+    if (this.user.username.length > 5)
+      alert(this.user.username);
+  }
 
   ngOnInit() {
   }
