@@ -9,6 +9,8 @@ import { ClassroomComponent } from './classroom/classroom.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {FormsModule} from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
+import { GraphQLModule } from './graphql.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
    declarations: [
@@ -22,7 +24,9 @@ import { RegisterComponent } from './register/register.component';
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
-    FormsModule
+    FormsModule,
+    GraphQLModule,
+    HttpClientModule
   ],
    providers: [],
    bootstrap: [
