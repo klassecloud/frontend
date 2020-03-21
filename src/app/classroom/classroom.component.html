@@ -14,14 +14,34 @@
 <div class="container test">
   <div class="border">
     <img class="img-fluid worksheet" src="https://heterogenitaet.bildung-rp.de/fileadmin/_migrated/RTE/RTEmagicC_Beispiel_Mathe.PNG.png">
-    <div [hidden]="activeQuestion" class="hiddenContainer">
-      <div class="hiddenDiv bg-light text-center"> // TODO: Add close by click offside
+    <div class="hiddenContainer" [hidden]="activeQuestion">
+      <div class="hiddenDiv bg-light text-center">
+          <fa-icon class="fa-pull-right close" [icon]="close" (click)="showQuestion()"></fa-icon>
         <h3>Frage?</h3>
         <input type="text">
         <div class="text-right mt-2">
           <button class="btn-success">Absenden</button>
         </div>
       </div>
+    </div>
+    <div class="hiddenContainer" [hidden]="activeSubmit">
+      <div class="hiddenDiv bg-light text-center">
+        <fa-icon class="fa-pull-right close" [icon]="close" (click)="showSubmit()"></fa-icon>
+        <h3>Geschafft!</h3>
+        <p>
+          Deine Aufgabe wurde erfolgreich eingerecht.
+        </p>
+        <button class="btn btn-success">Weiter zur nächsten Aufgabe</button>
+      </div>
+      <div class="hiddenContainer" [hidden]="activeCancel">
+        <div class="hiddenDiv bg-light text-center">
+          <fa-icon class="fa-pull-right close" [icon]="close" (click)="showCancel()"></fa-icon>
+          <h3>Geschafft!</h3>
+          <p>
+            Deine Aufgabe wird auf später verschoben.
+          </p>
+          <button class="btn btn-success">Weiter zur nächsten Aufgabe</button>
+        </div>
     </div>
   </div>
 </div>
@@ -31,8 +51,8 @@
     <button class="btn"><fa-icon [icon]="arrowLeft"></fa-icon></button>
     <button class="btn"><fa-icon class="text-danger" [icon]="circle"></fa-icon></button>
     <button class="btn" (click)="showQuestion()"><fa-icon class="text-warning" [icon]="circle"></fa-icon></button>
-    <button class="btn"><fa-icon class="text-success" [icon]="circle"></fa-icon></button>
-    <button class="btn"><fa-icon [icon]="arrowRight"></fa-icon></button>
+    <button class="btn" (click)="showSubmit()"><fa-icon class="text-success" [icon]="circle"></fa-icon></button>
+    <button class="btn" (click)="showCancel()"><fa-icon [icon]="arrowRight"></fa-icon></button>
   </div>
 </div>
 

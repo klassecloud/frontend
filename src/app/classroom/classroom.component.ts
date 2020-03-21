@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { faCircle } from '@fortawesome/free-solid-svg-icons';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-classroom',
@@ -14,6 +15,7 @@ export class ClassroomComponent implements OnInit {
   arrowLeft = faArrowLeft;
   arrowRight = faArrowRight;
   circle = faCircle;
+  close = faTimes;
   files = ['File1', 'File2', 'File3'];
   filesActive = true;
   publicMessages = ['Message1', 'Message2', 'Message3'];
@@ -21,6 +23,8 @@ export class ClassroomComponent implements OnInit {
   messagesActive = false;
   teacherActive = false;
   activeQuestion = true;
+  activeSubmit = true;
+  activeCancel = true;
 
 
 
@@ -60,6 +64,14 @@ showTeacher() {
 showQuestion() {
   this.activeQuestion = !this.activeQuestion;
 }
+
+showSubmit() {
+    this.activeSubmit = !this.activeSubmit;
+  }
+
+showCancel() {
+    this.activeCancel = !this.activeCancel;
+  }
 
   constructor() { }
 
