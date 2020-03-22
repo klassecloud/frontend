@@ -1,0 +1,38 @@
+.Willk {
+  width: 240px;
+  height: 119px;
+  font-family: Lato;
+  font-size: 24px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.25;
+  letter-spacing: normal;
+  text-align: left;
+  color: rgba(0,0,0,0.87);
+  margin: 0px;
+}
+.HEREINSPAZIERT {
+  width: 114px;
+  height: 17px;
+  font-family: Lato;
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.21;
+  letter-spacing: normal;
+  text-align: center;
+  color: #fff;
+  width: 344px;
+  height: 48px;
+  opacity: 0.87;
+  border-radius: 6px;
+  background-color: #3e89eb;
+}
+.container {
+  text-align: center;
+}
+
+
+/*# sourceMappingURL=/main.4a6a1893.css.map */
