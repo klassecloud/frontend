@@ -13,8 +13,9 @@
 
 <div class="container test">
   <div class="border">
-    <img class="img-fluid worksheet" src="https://heterogenitaet.bildung-rp.de/fileadmin/_migrated/RTE/RTEmagicC_Beispiel_Mathe.PNG.png">
+    <img class="img-fluid worksheet" src="https://images.gutefrage.net/media/fragen/bilder/hilfe-bei-schwierigen-mathematik-aufgaben/0_original.png?v=1541959268000">
     <div class="hiddenContainer" [hidden]="activeSubmit">
+      <ng-container (toggle)="showSubmit()">
       <div class="hiddenDiv bg-light text-center">
         <fa-icon class="fa-pull-right close" [icon]="close" (click)="showSubmit()"></fa-icon>
         <h3>Geschafft!</h3>
@@ -23,6 +24,7 @@
         </p>
         <button class="btn btn-success">Weiter zur nächsten Aufgabe</button>
       </div>
+    </ng-container>
     </div>
     <div class="hiddenContainer" [hidden]="activeQuestion">
       <div class="hiddenDiv bg-light text-center">
@@ -34,12 +36,12 @@
         </div>
       </div>
     </div>
-    <div class="hiddenContainer" [hidden]="activeCancel">
+    <div class="hiddenContainer closeWindow" [hidden]="activeCancel">
       <div class="hiddenDiv bg-light text-center">
         <fa-icon class="fa-pull-right close" [icon]="close" (click)="showCancel()"></fa-icon>
-        <h3>Geschafft!</h3>
+        <h3>Aufgabe verschoben</h3>
         <p>
-          Deine Aufgabe wurde erfolgreich eingerecht.
+          Erledige deine Aufgabe einfach später.
         </p>
         <button class="btn btn-success">Weiter zur nächsten Aufgabe</button>
       </div>
