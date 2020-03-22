@@ -1,11 +1,11 @@
 .worksheet
 {
-    min-height: 500px;
+    min-height: 350px;
 }
 
 fa-icon
 {
-  font-size: 30px;
+  font-size: 1em;
 }
 
 .file-list > li:nth-child(odd)
@@ -34,6 +34,7 @@ fa-icon
 .close
 {
   position: relative;
+  cursor: pointer; 
   top: -10px;
   right: -5px;
 }

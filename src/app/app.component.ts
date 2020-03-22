@@ -11,4 +11,8 @@ export class AppComponent {
   title = 'digital-classroom-frontend';
   isShown:boolean = false;
   bars = faBars;
+
+  autoCloseNav(){
+    return this.isShown = false;
+  }
 }

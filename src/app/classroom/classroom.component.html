@@ -13,18 +13,9 @@
 
 <div class="container test">
   <div class="border">
-    <img class="img-fluid worksheet" src="https://heterogenitaet.bildung-rp.de/fileadmin/_migrated/RTE/RTEmagicC_Beispiel_Mathe.PNG.png">
-    <div class="hiddenContainer" [hidden]="activeQuestion">
-      <div class="hiddenDiv bg-light text-center">
-          <fa-icon class="fa-pull-right close" [icon]="close" (click)="showQuestion()"></fa-icon>
-        <h3>Frage?</h3>
-        <input type="text">
-        <div class="text-right mt-2">
-          <button class="btn-success">Absenden</button>
-        </div>
-      </div>
-    </div>
+    <img class="img-fluid worksheet" src="https://images.gutefrage.net/media/fragen/bilder/hilfe-bei-schwierigen-mathematik-aufgaben/0_original.png?v=1541959268000">
     <div class="hiddenContainer" [hidden]="activeSubmit">
+      <ng-container (toggle)="showSubmit()">
       <div class="hiddenDiv bg-light text-center">
         <fa-icon class="fa-pull-right close" [icon]="close" (click)="showSubmit()"></fa-icon>
         <h3>Geschafft!</h3>
@@ -33,26 +24,37 @@
         </p>
         <button class="btn btn-success">Weiter zur nächsten Aufgabe</button>
       </div>
-      <div class="hiddenContainer" [hidden]="activeCancel">
-        <div class="hiddenDiv bg-light text-center">
-          <fa-icon class="fa-pull-right close" [icon]="close" (click)="showCancel()"></fa-icon>
-          <h3>Geschafft!</h3>
-          <p>
-            Deine Aufgabe wird auf später verschoben.
-          </p>
-          <button class="btn btn-success">Weiter zur nächsten Aufgabe</button>
-        </div>
+    </ng-container>
     </div>
-  </div>
+    <div class="hiddenContainer" [hidden]="activeQuestion">
+      <div class="hiddenDiv bg-light text-center">
+        <fa-icon class="fa-pull-right close" [icon]="close" (click)="showQuestion()"></fa-icon>
+        <h3>Frage?</h3>
+        <input type="text">
+        <div class="text-right mt-2">
+          <button class="btn btn-success">Absenden</button>
+        </div>
+      </div>
+    </div>
+    <div class="hiddenContainer closeWindow" [hidden]="activeCancel">
+      <div class="hiddenDiv bg-light text-center">
+        <fa-icon class="fa-pull-right close" [icon]="close" (click)="showCancel()"></fa-icon>
+        <h3>Aufgabe verschoben</h3>
+        <p>
+          Erledige deine Aufgabe einfach später.
+        </p>
+        <button class="btn btn-success">Weiter zur nächsten Aufgabe</button>
+      </div>
+    </div>
 </div>
 
 <div class="container">
-  <div class="border d-flex justify-content-around">
+  <div class="border d-flex flex-wrap justify-content-around">
     <button class="btn"><fa-icon [icon]="arrowLeft"></fa-icon></button>
-    <button class="btn"><fa-icon class="text-danger" [icon]="circle"></fa-icon></button>
+    <button class="btn" (click)="showCancel()"><fa-icon class="text-danger" [icon]="circle"></fa-icon></button>
     <button class="btn" (click)="showQuestion()"><fa-icon class="text-warning" [icon]="circle"></fa-icon></button>
     <button class="btn" (click)="showSubmit()"><fa-icon class="text-success" [icon]="circle"></fa-icon></button>
-    <button class="btn" (click)="showCancel()"><fa-icon [icon]="arrowRight"></fa-icon></button>
+    <button class="btn"><fa-icon [icon]="arrowRight"></fa-icon></button>
   </div>
 </div>
 

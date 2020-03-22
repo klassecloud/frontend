@@ -11,26 +11,6 @@
     <script src="https://kit.fontawesome.com/0d16d61e2f.js" crossorigin="anonymous"></script>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" routerLink="/"><img width="20%" src=""></a>
-        <button #navbarToggler class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" (click)="isShown = !isShown" [attr.aria-expanded]="isShown"  aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent" >
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" (click)="isShown = false" routerLink="/">Startseite <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" (click)="isShown = false" routerLink="/">Kontakt</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" (click)="isShown = false" routerLink="/">Extras</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
     <router-outlet></router-outlet>
     <footer class="footer fixed-bottom">
       <div class="container-fluid bg-dark">
@@ -38,16 +18,15 @@
           <li class="list-item">ICON 1</li>
           <li class="list-item">ICON 2</li>
           <li class="list-item">ICON 3</li>
-
           <div class="dropup">
             <button type="button" (click)="isShown = !isShown" [attr.aria-expanded]="isShown" class="btn btn-secondary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <li class="list-item"><fa-icon [icon]="bars"></fa-icon></li></button>
             <div class="dropdown-menu" [ngClass]="{ 'show': isShown }">
               <div class="d-flex flex-column pl-2">
-                <a href="">Link 2</a>
-                <a href="">Link 3</a>
-                <a href="">Link 4</a>
-                <a href="">Link 5</a>
+                <a routerLink="/login" (click)="autoCloseNav()">Login</a>
+                <a routerLink="/register" (click)="autoCloseNav()">Registieren</a>
+                <a routerLink="/classroom" (click)="autoCloseNav()">Classroom</a>
+                <a routerLink="/" (click)="autoCloseNav()">Startseite</a>
               </div>
             </div>
           </div>

@@ -29,7 +29,7 @@ export class ClassroomComponent implements OnInit {
 
 
 showFiles() {
-  if(this.filesActive != true) {
+  if (this.filesActive != true) {
     document.querySelector('.tabFiles').classList.add('class', 'active');
     document.querySelector('.tabTeacher').classList.remove('class', 'active');
     document.querySelector('.tabChat').classList.remove('class', 'active');
@@ -40,7 +40,7 @@ showFiles() {
 }
 
 showMessages() {
-  if(this.messagesActive != true) {
+  if (this.messagesActive != true) {
     document.querySelector('.tabChat').classList.add('class', 'active');
     document.querySelector('.tabFiles').classList.remove('class', 'active');
     document.querySelector('.tabTeacher').classList.remove('class', 'active');
@@ -61,21 +61,42 @@ showTeacher() {
   }
 }
 
-showQuestion() {
-  this.activeQuestion = !this.activeQuestion;
-}
-
-showSubmit() {
-    this.activeSubmit = !this.activeSubmit;
+  showQuestion() {
+  return this.activeQuestion = !this.activeQuestion;
   }
 
-showCancel() {
-    this.activeCancel = !this.activeCancel;
+  showSubmit() {
+    return this.activeSubmit = !this.activeSubmit;
   }
 
-  constructor() { }
+  showCancel() {
+    return this.activeCancel = !this.activeCancel;
+  }
 
-  ngOnInit() {
+  /*
+  * TODO: muss noch gefixt werden.
+  closeAllWindows() {
+    if (this.showSubmit()) {
+      this.activeQuestion = true;
+      this.activeCancel = true;
+      return null;
+    }
+    if (this.showQuestion()) {
+      this.activeCancel = true;
+      this.activeSubmit = true;
+      return null;
+    }
+    if (this.showCancel()) {
+      this.activeCancel = true;
+      this.activeQuestion = true;
+      return null;
+    }
+  }
+   */
+
+        constructor() { }
+
+    ngOnInit() {
   }
 
 }
