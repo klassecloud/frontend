@@ -14,13 +14,25 @@
     <router-outlet></router-outlet>
     <div class="mt-5"></div>
     <footer class="footer fixed-bottom">
-      <div class="container-fluid bg-dark">
+      <div class="container-fluid bg-dark pb-3 pl-5">
         <ul class="nav justify-content-around text-white">
-          <li><a routerLink="/classroom"><fa-icon class="text-white" [icon]="school"></fa-icon></a></li>
-          <li><a routerLink="/"><fa-icon class="text-white" [icon]="dashboard"></fa-icon></a></li>
-          <li><a routerLink="/"><fa-icon class="text-white" [icon]="chat"></fa-icon></a></li>
+          <li>
+            <a routerLink="/classroom">
+              <fa-icon class="text-white" [icon]="school"></fa-icon>
+              <span class="text-white icontext">Classroom</span>
+            </a>
+          </li>
+          <li>
+            <a routerLink="/"><fa-icon class="text-white" [icon]="dashboard"></fa-icon>
+            <span class="text-white icontext">Dashboard</span></a>
+          </li>
+          <li>
+            <a routerLink="/"><fa-icon class="text-white" [icon]="chat"></fa-icon>
+            <span class="text-white icontext pl-3">Chat</span>
+            </a>
+          </li>
           <div class="dropup">
-            <button type="button" (click)="isShown = !isShown" [attr.aria-expanded]="isShown" class="btn btn-secondary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button type="button" (click)="isShown = !isShown" [attr.aria-expanded]="isShown" class="btn text-white pt-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <li class="list-item"><fa-icon [icon]="elipse"></fa-icon></li></button>
             <div class="dropdown-menu pl-4" [ngClass]="{ 'show': isShown }">
                 <ul class="list-group text-white">
