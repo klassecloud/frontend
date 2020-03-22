@@ -25,13 +25,14 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+/*
+  ngOnInit(): void {
     this.homeService.getUser().subscribe(user => {
       this.user = user;
         console.log(this.user.data.listUsers.items[0]);
     }
     );
   }
-
-
-
+*/
 }

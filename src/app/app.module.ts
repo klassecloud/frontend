@@ -11,6 +11,7 @@ import {FormsModule} from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
 import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
+import { ClassoverviewComponent } from './classoverview/classoverview.component';
 
 @NgModule({
    declarations: [
@@ -18,16 +19,17 @@ import { HttpClientModule } from '@angular/common/http';
       HomeComponent,
       LoginComponent,
       ClassroomComponent,
-      RegisterComponent
+      RegisterComponent,
+      ClassoverviewComponent
    ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FontAwesomeModule,
-    FormsModule,
-    GraphQLModule,
-    HttpClientModule
-  ],
+   imports: [
+      BrowserModule,
+      AppRoutingModule,
+      FontAwesomeModule,
+      FormsModule,
+      GraphQLModule,
+      HttpClientModule
+   ],
    providers: [],
    bootstrap: [
       AppComponent

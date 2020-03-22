@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import { faCogs } from '@fortawesome/free-solid-svg-icons';
+import { faHome } from '@fortawesome/free-solid-svg-icons';
+import { faGraduationCap } from '@fortawesome/free-solid-svg-icons';
+import { faUsersCog } from '@fortawesome/free-solid-svg-icons';
+import { faSignInAlt } from '@fortawesome/free-solid-svg-icons';
+import { faComments } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +16,13 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 export class AppComponent {
   title = 'digital-classroom-frontend';
   isShown:boolean = false;
-  bars = faBars;
+  elipse = faEllipsisV;
+  settings = faCogs;
+  dashboard = faHome;
+  school = faGraduationCap;
+  register = faUsersCog;
+  signIn = faSignInAlt;
+  chat = faComments;
 
   autoCloseNav(){
     return this.isShown = false;
