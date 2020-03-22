@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Course} from '../models/classroom';
 import {User} from '../models/user';
+import {HomeService} from '../home.service';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +10,7 @@ import {User} from '../models/user';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private homeService: HomeService) { }
 
   user: User = new class implements User {
     email: string;
