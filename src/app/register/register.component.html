@@ -6,13 +6,13 @@
           <h5 class="card-title text-center">Login</h5>
           <form class="form-register">
             <div class="form-group">
-              <input [(ngModel)]="user.username" type="text" class="form-control" name="loginUsername" id="loginUsername" aria-describedby="userHelp" placeholder="Benutzername" required>
+              <input [(ngModel)]="user.userName" type="text" class="form-control" name="loginUsername" id="loginUsername" aria-describedby="userHelp" placeholder="Benutzername" required>
               <label for="loginUsername">Benutzername</label>
               <small id="userHelp" class="form-text text-muted">Dein Username wird später nicht angezeigt.</small>
               <p *ngIf="usernameEmpty">Du musst einen Benutzernamen angeben</p>
             </div>
             <div class="form-group">
-              <input [(ngModel)]="user.nickname" type="text" class="form-control" name="loginUsername" id="userNickname" aria-describedby="nicknameHelp" placeholder="Anzeigename" required>
+              <input [(ngModel)]="user.displayName" type="text" class="form-control" name="loginUsername" id="userNickname" aria-describedby="nicknameHelp" placeholder="Anzeigename" required>
               <label for="loginUsername">Anzeigename</label>
               <small id="nicknameHelp" class="form-text text-muted">Dieser Name wird später angezeigt.</small>
               <p *ngIf="nicknameEmpty">Du musst einen Anzeigenamen eingeben</p>

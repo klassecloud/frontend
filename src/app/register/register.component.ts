@@ -13,9 +13,9 @@ export class RegisterComponent implements OnInit {
   user: User = new class implements User {
     email: string;
     id: number;
-    nickname: null;
+    displayName: null;
     password: null;
-    username: null;
+    userName: null;
   };
   repeatPassword: null;
   passwordDontMatch: boolean;
@@ -38,10 +38,10 @@ export class RegisterComponent implements OnInit {
       this.passwordDontMatch = !(this.repeatPassword === this.user.password);
   }
   isUsernameEmpty(): void {
-    this.usernameEmpty = this.user.username == null || this.user.username.length < 1;
+    this.usernameEmpty = this.user.userName == null || this.user.userName.length < 1;
   }
   isNicknameEmpty(): void {
-    this.nicknameEmpty = this.user.nickname == null || this.user.nickname.length < 1;
+    this.nicknameEmpty = this.user.displayName == null || this.user.displayName.length < 1;
   }
   signUp(): void {
       this.isPasswordLongEnough();
