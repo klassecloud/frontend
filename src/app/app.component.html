@@ -12,18 +12,18 @@
   </head>
   <body>
     <router-outlet></router-outlet>
-    <div class="mt-5"></div>
+    <div class="mt-5 pt-5"></div>
     <footer class="footer fixed-bottom">
       <div class="container-fluid bg-dark pb-3 pl-5">
         <ul class="nav justify-content-around text-white">
-          <li>
+          <li class="">
             <a routerLink="/classroom">
               <fa-icon class="text-white" [icon]="school"></fa-icon>
               <span class="text-white icontext">Classroom</span>
             </a>
           </li>
           <li>
-            <a routerLink="/"><fa-icon class="text-white" [icon]="dashboard"></fa-icon>
+            <a routerLink="/classoverview"><fa-icon class="text-white" [icon]="dashboard"></fa-icon>
             <span class="text-white icontext">Dashboard</span></a>
           </li>
           <li>
@@ -34,7 +34,7 @@
           <div class="dropup">
             <button type="button" (click)="isShown = !isShown" [attr.aria-expanded]="isShown" class="btn text-white pt-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <li class="list-item"><fa-icon [icon]="elipse"></fa-icon></li></button>
-            <div class="dropdown-menu pl-4" [ngClass]="{ 'show': isShown }">
+            <div class="dropdown-menu pl-4 test" [ngClass]="{ 'show': isShown }">
                 <ul class="list-group text-white">
                   <li class="list-item"><a routerLink="/login" (click)="autoCloseNav()"><fa-icon [icon]="signIn"></fa-icon></a></li>
                   <li class="list-item"><a routerLink="/register" (click)="autoCloseNav()"><fa-icon [icon]="register"></fa-icon></a></li>

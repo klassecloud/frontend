@@ -29,7 +29,7 @@ isUsernameNull: boolean;
   }
 
   checkUsername(): void {
-    this.isUsernameNull = this.user.username == null;
+    this.isUsernameNull = this.user.userName == null;
   }
 
   login(): void {

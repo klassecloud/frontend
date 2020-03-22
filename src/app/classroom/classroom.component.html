@@ -11,9 +11,9 @@
   </div>
 </div>
 
-<div class="container test">
+<div class="container">
   <div class="border">
-    <img class="img-fluid worksheet" src="https://images.gutefrage.net/media/fragen/bilder/hilfe-bei-schwierigen-mathematik-aufgaben/0_original.png?v=1541959268000">
+    <img class="img-fluid" src="https://images.gutefrage.net/media/fragen/bilder/hilfe-bei-schwierigen-mathematik-aufgaben/0_original.png?v=1541959268000">
     <div class="hiddenContainer" [hidden]="activeSubmit">
       <ng-container (toggle)="showSubmit()">
       <div class="hiddenDiv bg-light text-center">
@@ -48,20 +48,18 @@
     </div>
 </div>
 
-<div class="container">
-  <div class="border d-flex flex-wrap justify-content-around">
-    <button class="btn"><fa-icon [icon]="arrowLeft"></fa-icon></button>
-    <button class="btn" (click)="showCancel()"><fa-icon class="text-danger" [icon]="circle"></fa-icon></button>
-    <button class="btn" (click)="showQuestion()"><fa-icon class="text-warning" [icon]="circle"></fa-icon></button>
-    <button class="btn" (click)="showSubmit()"><fa-icon class="text-success" [icon]="circle"></fa-icon></button>
-    <button class="btn"><fa-icon [icon]="arrowRight"></fa-icon></button>
-  </div>
+<div class="container border d-flex flex-wrap justify-content-around">
+  <button class="btn"><fa-icon [icon]="arrowLeft"></fa-icon></button>
+  <button class="btn" (click)="showCancel()"><fa-icon class="text-danger" [icon]="circle"></fa-icon></button>
+  <button class="btn" (click)="showQuestion()"><fa-icon class="text-warning" [icon]="circle"></fa-icon></button>
+  <button class="btn" (click)="showSubmit()"><fa-icon class="text-success" [icon]="circle"></fa-icon></button>
+  <button class="btn"><fa-icon [icon]="arrowRight"></fa-icon></button>
 </div>
 
-<div class="container">
+<div class="container mt-3 pl-0 pr-0">
   <ul class="nav nav-tabs nav-stacked">
     <li class="nav-item">
-      <button class="nav-link tabFiles active" (click)=showFiles()>Dateien</button>
+      <button class="nav-link tabFiles active bg-info" (click)=showFiles()>Dateien</button>
     </li>
     <li class="nav-item">
       <button class="nav-link tabChat" (click)=showMessages()>Chat</button>
@@ -72,28 +70,29 @@
   </ul>
 </div>
 
-<div class="container" *ngIf="filesActive">
+<div class="container pr-0 pl-0" *ngIf="filesActive">
   <ul class="list-group file-list">
-    <li class="list-group-item list-group-item-action" *ngFor="let file of files">{{ file }}</li>
+    <li class="list-group-item list-group-item-action" *ngFor="let file of files">{{ file }} <a routerLink="/classroom/{{file}}" class="float-right">Download</a></li>
   </ul>
-  <div class="d-flex flex-wrap justify-content-between">
-    <input type="file">
+  <div class="d-flex flex-wrap justify-content-between mt-2">
+    <input type="file" id="myFile" style="display:none;" />
+    <button type="button" class="btn btn-secondary" onclick="document.getElementById('myFile').click();">Browse</button>
     <button class="btn btn-success">Absenden</button>
   </div>
 </div>
 
-<div class="container" *ngIf="messagesActive">
+<div class="container pr-0 pl-0" *ngIf="messagesActive">
   <ul class="list-group file-list">
     <li class="list-group-item list-group-item-action" *ngFor="let message of publicMessages">{{ message }}</li>
   </ul>
-  <div class="d-flex flex-wrap justify-content-between">
+  <div class="d-flex flex-wrap justify-content-between mt-2">
     <input type="text" class="rounded">
     <button class="btn btn-success">Absenden</button>
   </div>
 
 </div>
 
-<div class="container" *ngIf="teacherActive">
+<div class="container pr-0 pl-0" *ngIf="teacherActive">
   <ul class="list-group file-list">
     <li class="list-group-item list-group-item-action" *ngFor="let message of privateMessages">{{ message }}</li>
   </ul>

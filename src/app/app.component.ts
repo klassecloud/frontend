@@ -24,7 +24,8 @@ export class AppComponent {
   signIn = faSignInAlt;
   chat = faComments;
 
-  autoCloseNav(){
+  autoCloseNav() {
     return this.isShown = false;
   }
+
 }

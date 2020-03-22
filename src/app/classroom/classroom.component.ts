@@ -30,9 +30,9 @@ export class ClassroomComponent implements OnInit {
 
 showFiles() {
   if (this.filesActive != true) {
-    document.querySelector('.tabFiles').classList.add('class', 'active');
-    document.querySelector('.tabTeacher').classList.remove('class', 'active');
-    document.querySelector('.tabChat').classList.remove('class', 'active');
+    document.querySelector('.tabFiles').classList.add('class', 'active', 'bg-info');
+    document.querySelector('.tabTeacher').classList.remove('class', 'active', 'bg-info');
+    document.querySelector('.tabChat').classList.remove('class', 'active', 'bg-info');
     this.filesActive = true;
     this.messagesActive = false;
     this.teacherActive = false;
@@ -41,9 +41,9 @@ showFiles() {
 
 showMessages() {
   if (this.messagesActive != true) {
-    document.querySelector('.tabChat').classList.add('class', 'active');
-    document.querySelector('.tabFiles').classList.remove('class', 'active');
-    document.querySelector('.tabTeacher').classList.remove('class', 'active');
+    document.querySelector('.tabChat').classList.add('class', 'active', 'bg-info');
+    document.querySelector('.tabFiles').classList.remove('class', 'active', 'bg-info');
+    document.querySelector('.tabTeacher').classList.remove('class', 'active', 'bg-info');
     this.messagesActive = true;
     this.filesActive = false;
     this.teacherActive = false;
@@ -52,9 +52,9 @@ showMessages() {
 
 showTeacher() {
   if (this.teacherActive != true) {
-    document.querySelector('.tabTeacher').classList.add('class', 'active');
-    document.querySelector('.tabFiles').classList.remove('class', 'active');
-    document.querySelector('.tabChat').classList.remove('class', 'active');
+    document.querySelector('.tabTeacher').classList.add('class', 'active', 'bg-info');
+    document.querySelector('.tabFiles').classList.remove('class', 'active', 'bg-info');
+    document.querySelector('.tabChat').classList.remove('class', 'active', 'bg-info');
     this.teacherActive = true;
     this.filesActive = false;
     this.messagesActive = false;
