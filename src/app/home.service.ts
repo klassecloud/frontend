@@ -9,12 +9,15 @@ import {Course} from './models/classroom';
 
 export class HomeService {
 
-  constructor() { }
-
+  constructor() {
+  }
+}
+/*
   getCourses(): Observable<Course[]> {
       return of(null);
   }
 
   getUser():
 }
+ */
 
