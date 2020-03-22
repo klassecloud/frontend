@@ -19,7 +19,7 @@ export class ClassroomComponent implements OnInit {
   files = ['File1', 'File2', 'File3'];
   filesActive = true;
   publicMessages = ['Message1', 'Message2', 'Message3'];
-  privateMessages = ['Private Nachricht', '1Mehr Private NAchrichten', 'Viel mehr Private NAchrichten'];
+  privateMessages = ['Private Nachricht', '1Mehr Private NAchrichten', 'Viel mehr Private NAchrichten', 'Viel mehr Private NAchrichten', 'Viel mehr Private NAchrichten'];
   messagesActive = false;
   teacherActive = false;
   activeQuestion = true;
