@@ -76,12 +76,21 @@
   <ul class="list-group file-list">
     <li class="list-group-item list-group-item-action" *ngFor="let file of files">{{ file }}</li>
   </ul>
+  <div class="d-flex flex-wrap justify-content-between">
+    <input type="file">
+    <button class="btn btn-success">Absenden</button>
+  </div>
 </div>
 
 <div class="container" *ngIf="messagesActive">
   <ul class="list-group file-list">
     <li class="list-group-item list-group-item-action" *ngFor="let message of publicMessages">{{ message }}</li>
   </ul>
+  <div class="d-flex flex-wrap justify-content-between">
+    <input type="text" class="rounded">
+    <button class="btn btn-success">Absenden</button>
+  </div>
+
 </div>
 
 <div class="container" *ngIf="teacherActive">
