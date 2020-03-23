@@ -15,6 +15,7 @@ import { ClassoverviewComponent } from './classoverview/classoverview.component'
 import {JwtInterceptor} from './helpers/jwt.interceptor';
 import {ErrorInterceptor} from './helpers/error.interceptor';
 
+
 @NgModule({
    declarations: [
       AppComponent,

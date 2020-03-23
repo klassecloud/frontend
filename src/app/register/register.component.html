@@ -4,33 +4,30 @@
       <div class="card card-signin my-5">
         <div class="card-body">
           <h5 class="card-title text-center">Login</h5>
-          <form class="form-register">
+          <form [formGroup]="registerForm"  class="form-register" (ngSubmit)="onSubmit()">
             <div class="form-group">
-              <input [(ngModel)]="user.userName" type="text" class="form-control" name="loginUsername" id="loginUsername" aria-describedby="userHelp" placeholder="Benutzername" required>
-              <label for="loginUsername">Benutzername</label>
+              <input type="text" class="form-control" id="username" formControlName="username" aria-describedby="userHelp" placeholder="Benutzername" required>
+              <label for="username">Benutzername</label>
               <small id="userHelp" class="form-text text-muted">Dein Username wird später nicht angezeigt.</small>
-              <p *ngIf="usernameEmpty">Du musst einen Benutzernamen angeben</p>
             </div>
             <div class="form-group">
-              <input [(ngModel)]="user.displayName" type="text" class="form-control" name="loginUsername" id="userNickname" aria-describedby="nicknameHelp" placeholder="Anzeigename" required>
-              <label for="loginUsername">Anzeigename</label>
+              <input  type="text" class="form-control"  id="nickname" formControlName="nickname" aria-describedby="nicknameHelp" placeholder="Anzeigename" required>
+              <label for="nickname">Anzeigename</label>
               <small id="nicknameHelp" class="form-text text-muted">Dieser Name wird später angezeigt.</small>
-              <p *ngIf="nicknameEmpty">Du musst einen Anzeigenamen eingeben</p>
             </div>
             <div class="form-group">
-              <input [(ngModel)]="user.password" type="password" name="userPassword" id="inputPassword" class="form-control" placeholder="Password" required/>
-              <label for="inputPassword">Passwort</label>
-              <p *ngIf="passwordToShort">Das passwort ist zu kurz.</p>
-              <input [(ngModel)]="repeatPassword" type="password" class="form-control" name="userPasswordRepeat" id="passwordRepeat" placeholder="Passwort wiederholen" required/>
+              <input  type="password" name="password" id="password" formControlName="password" class="form-control" placeholder="Password" required/>
+              <label for="password">Passwort</label>
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control" name="passwordRepeat" formControlName="passwordRepeat" id="passwordRepeat" placeholder="Passwort wiederholen" required/>
               <label for="passwordRepeat">Passwort wiederholen</label>
-              <p *ngIf="passwordDontMatch">Die Passwörter stimmen nicht überein.</p>
             </div>
-
-            <div class="custom-control custom-checkbox mb-3">
-              <input type="checkbox" class="custom-control-input" id="customCheck1" checked>
-              <label class="custom-control-label" for="customCheck1">Passwort merken</label>
-            </div>
-            <a class="btn btn-lg btn-primary btn-block text-uppercase text-white" (click)="signUp()">Registrieren</a>
+            <button [disabled]="loading" class="btn btn-primary">
+              <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+              Registrieren
+            </button>
+            <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
           </form>
         </div>
       </div>

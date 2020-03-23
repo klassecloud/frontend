@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../models/user';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
+import {AuthenticationService} from '../service/authentication.service';
+import {MustMatch} from '../helpers/must-match.validator';
+import {first} from 'rxjs/operators';
 
 @Component({
   selector: 'app-register',
@@ -8,50 +12,66 @@ import { User } from '../models/user';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor() { }
+  registerForm: FormGroup;
+  submitted = false;
+  loading = false;
+  error: '';
 
-  user: User = new class implements User {
-    email: string;
-    id: number;
-    displayName: null;
-    password: null;
-    userName: null;
-  };
-  repeatPassword: null;
-  passwordDontMatch: boolean;
-  passwordToShort: boolean;
-  nicknameEmpty: boolean;
-  usernameEmpty: boolean;
+  constructor(
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router,
+    private authenticationService: AuthenticationService
+  ) {
+    if (this.authenticationService.currentUserValue) {
+      this.router.navigate(['/']);
+    }
+  }
 
-  ngOnInit(): void {
+
+
+  ngOnInit() {
+    this.registerForm = this.formBuilder.group({
+        username: ['', Validators.required],
+        nickname: ['', Validators.required],
+        password: ['', [Validators.required, Validators.minLength(8)]],
+        passwordRepeat: ['', Validators.required]
+      },
+      {
+        validator: MustMatch('password', 'passwordRepeat')
+      });
   }
-  isPasswordLongEnough(): void {
-    if (this.user.password == null || this.user.password.length < 8)
-      this.passwordToShort = true;
-    else
-      this.passwordToShort = false;
+
+  get f() {
+    return this.registerForm.controls;
   }
-  isPasswordMatching(): void {
-    if (this.repeatPassword == null)
-      this.passwordDontMatch = true;
-    else
-      this.passwordDontMatch = !(this.repeatPassword === this.user.password);
+
+  onSubmit() {
+    this.submitted = true;
+    if (this.registerForm.invalid) {
+      return;
+    }
+    this.loading = true;
+    this.authenticationService.register(this.f.username.value, this.f.password.value, this.f.nickname.value)
+      .pipe(first())
+      .subscribe(
+        data => {
+          this.router.navigate(['/']);
+        },
+        error => {
+          this.error = error;
+          this.loading = false;
+        }
+      );
+
   }
-  isUsernameEmpty(): void {
-    this.usernameEmpty = this.user.userName == null || this.user.userName.length < 1;
+
+  onReset() {
+    this.submitted = false;
+    this.loading = false;
+    this.registerForm.reset();
   }
-  isNicknameEmpty(): void {
-    this.nicknameEmpty = this.user.displayName == null || this.user.displayName.length < 1;
-  }
-  signUp(): void {
-      this.isPasswordLongEnough();
-      this.isPasswordMatching();
-      this.isUsernameEmpty();
-      this.isNicknameEmpty();
-      if (!this.passwordToShort && !this.passwordDontMatch && !this.nicknameEmpty && !this.usernameEmpty) {
-        alert('Hello, World!');
-      }
-  }
+
 
 }
 
