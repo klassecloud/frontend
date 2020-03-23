@@ -37,7 +37,7 @@
             <div class="dropdown-menu pl-4 test" [ngClass]="{ 'show': isShown }">
                 <ul class="list-group text-white">
                   <li *ngIf="!currentUser" class="list-item"><a routerLink="/login" (click)="autoCloseNav()"><fa-icon [icon]="signIn"></fa-icon></a></li>
-                  <li *ngIf="currentUser" class="list-item"><a routerLink="/login" (click)="logout()"><fa-icon [icon]="signIn"></fa-icon></a></li>
+                  <li *ngIf="currentUser" class="list-item"><a routerLink="/login" (click)="logout()"><fa-icon [icon]="signOut"></fa-icon></a></li>
                   <li *ngIf="!currentUser" class="list-item"><a routerLink="/register" (click)="autoCloseNav()"><fa-icon [icon]="register"></fa-icon></a></li>
                   <li class="list-item"><a routerLink="/settings" (click)="autoCloseNav()"><fa-icon [icon]="settings"></fa-icon></a></li>
                 </ul>

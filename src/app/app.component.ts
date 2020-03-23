@@ -6,6 +6,7 @@ import { faGraduationCap } from '@fortawesome/free-solid-svg-icons';
 import { faUsersCog } from '@fortawesome/free-solid-svg-icons';
 import { faSignInAlt } from '@fortawesome/free-solid-svg-icons';
 import { faComments } from '@fortawesome/free-solid-svg-icons';
+import {faSignOutAlt} from '@fortawesome/free-solid-svg-icons';
 import {User} from './models/user';
 import {Router} from '@angular/router';
 import {AuthenticationService} from './service/authentication.service';
@@ -26,6 +27,7 @@ export class AppComponent {
   register = faUsersCog;
   signIn = faSignInAlt;
   chat = faComments;
+  signOut = faSignOutAlt;
   //Auth
   currentUser: User;
 
@@ -38,7 +40,7 @@ export class AppComponent {
 
   logout() {
     this.authenticationService.logout();
-    this.router.navigate(['/login']);
+    this.router.navigate(['/']);
   }
 
   autoCloseNav() {
