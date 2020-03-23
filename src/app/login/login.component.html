@@ -4,24 +4,31 @@
         <div class="card card-signin my-5">
           <div class="card-body">
             <h5 class="card-title text-center">Login</h5>
-            <form class="form-signin">
+            <form [formGroup]="loginForm" class="form-signin" (ngSubmit)="onSubmit()">
               <div class="form-group">
-                <input [(ngModel)]="user.username" type="text" class="form-control" name="loginUsername" id="loginUsername" aria-describedby="userHelp" placeholder="Benutzername">
-                <label for="loginUsername">Benutzername</label>
+                <input  type="text" class="form-control" id="username" formControlName="username" aria-describedby="userHelp" placeholder="Benutzername">
+                <label for="username">Benutzername</label>
                 <small id="userHelp" class="form-text text-muted">Logge dich bitte mit deinen Benutzername ein.</small>
-                <p *ngIf="isUsernameNull">Trage deinen Benutzernamen ein</p>
+                <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                  <div *ngIf="f.username.errors.required">Username is required</div>
+                </div>
               </div>
               <div class="form-group">
-                <input [(ngModel)]="user.password" type="password" name="userPassword" id="inputPassword" class="form-control" placeholder="Password" required/>
-                <label for="inputPassword">Passwort</label>
-                <p *ngIf="isPasswordNull">Trage dein Passwort ein</p>
+                <input  type="password"  formControlName="password" id="password" class="form-control" placeholder="Password" required/>
+                <label for="password">Passwort</label>
+                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                  <div *ngIf="f.password.errors.required">Password is required</div>
+                </div>
               </div>
-
               <div class="custom-control custom-checkbox mb-3">
                 <input type="checkbox" class="custom-control-input" id="customCheck1">
                 <label class="custom-control-label" for="customCheck1">Passwort merken</label>
               </div>
-              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" (click)="login()">Login</button>
+              <button [disabled]="loading" class="btn btn-primary">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                Login
+              </button>
+              <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
               <a class="btn btn-lg btn-primary btn-block text-uppercase text-white">Passwort vergessen</a>
               <a class="btn btn-lg btn-primary btn-block text-uppercase text-white" [routerLink]="['/register']" >Registrieren</a>
             </form>

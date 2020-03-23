@@ -6,6 +6,9 @@ import { faGraduationCap } from '@fortawesome/free-solid-svg-icons';
 import { faUsersCog } from '@fortawesome/free-solid-svg-icons';
 import { faSignInAlt } from '@fortawesome/free-solid-svg-icons';
 import { faComments } from '@fortawesome/free-solid-svg-icons';
+import {User} from './models/user';
+import {Router} from '@angular/router';
+import {AuthenticationService} from './service/authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -23,6 +26,20 @@ export class AppComponent {
   register = faUsersCog;
   signIn = faSignInAlt;
   chat = faComments;
+  //Auth
+  currentUser: User;
+
+  constructor(
+    private router: Router,
+    private authenticationService: AuthenticationService
+  ) {
+    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+  }
+
+  logout() {
+    this.authenticationService.logout();
+    this.router.navigate(['/login']);
+  }
 
   autoCloseNav() {
     return this.isShown = false;

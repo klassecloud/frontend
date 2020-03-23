@@ -7,11 +7,13 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ClassroomComponent } from './classroom/classroom.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
 import { GraphQLModule } from './graphql.module';
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { ClassoverviewComponent } from './classoverview/classoverview.component';
+import {JwtInterceptor} from './helpers/jwt.interceptor';
+import {ErrorInterceptor} from './helpers/error.interceptor';
 
 @NgModule({
    declarations: [
@@ -22,15 +24,19 @@ import { ClassoverviewComponent } from './classoverview/classoverview.component'
       RegisterComponent,
       ClassoverviewComponent
    ],
-   imports: [
-      BrowserModule,
-      AppRoutingModule,
-      FontAwesomeModule,
-      FormsModule,
-      GraphQLModule,
-      HttpClientModule
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FontAwesomeModule,
+        FormsModule,
+        GraphQLModule,
+        HttpClientModule,
+        ReactiveFormsModule
+    ],
+   providers: [
+     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
    ],
-   providers: [],
    bootstrap: [
       AppComponent
    ]

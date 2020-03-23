@@ -1,5 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 import { User } from '../models/user';
+import {AuthenticationService} from '../service/authentication.service';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
+import {first} from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -8,36 +12,55 @@ import { User } from '../models/user';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  loginForm: FormGroup;
+  submitted = false;
+  loading = false;
+  returnUrl: string;
+  error: '';
 
- user: User = new class implements User {
-   email: string;
-   id: number;
-   nickname: string;
-   password: string;
-   username: string;
- };
-
-isPasswordNull: boolean;
-isUsernameNull: boolean;
+  constructor(
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router,
+    private authenticationService: AuthenticationService
+  ) {
+    if (this.authenticationService.currentUserValue) {
+      this.router.navigate(['/']);
+    }
+  }
 
   ngOnInit() {
+    this.loginForm = this.formBuilder.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required]
+    });
+
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
-  checkPassword(): void {
-    this.isPasswordNull = this.user.password == null;
+  get f() {
+    return this.loginForm.controls;
   }
 
-  checkUsername(): void {
-    this.isUsernameNull = this.user.userName == null;
-  }
-
-  login(): void {
-    this.checkPassword();
-    this.checkUsername();
-    if (!this.isUsernameNull && !this.isPasswordNull) {
-      alert('Hello, World');
+  onSubmit() {
+    this.submitted = true;
+    if (this.loginForm.invalid) {
+      return;
     }
+
+    this.loading = true;
+    console.log(this.f.username.value +' '+ this.f.password.value)
+    this.authenticationService.login(this.f.username.value, this.f.password.value)
+      .pipe(first())
+      .subscribe(
+        data => {
+          this.router.navigate([this.returnUrl]);
+        },
+        error => {
+          this.error = error;
+          this.loading = false;
+        }
+      );
   }
 
 }
