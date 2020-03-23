@@ -3,6 +3,7 @@ import {Course} from '../models/classroom';
 import {User} from '../models/user';
 import {HomeService} from '../home.service';
 import {ApolloQueryResult} from 'apollo-client';
+import { AuthenticationService} from '../service/authentication.service';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,13 @@ import {ApolloQueryResult} from 'apollo-client';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private homeService: HomeService) { }
+  currentUser: User;
+  constructor(
+    private homeService: HomeService,
+    private authenticationService: AuthenticationService
+  ) {
+    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+  }
 
   user: ApolloQueryResult<User[]>;
 
@@ -24,15 +31,7 @@ export class HomeComponent implements OnInit {
 
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
   }
-/*
-  ngOnInit(): void {
-    this.homeService.getUser().subscribe(user => {
-      this.user = user;
-        console.log(this.user.data.listUsers.items[0]);
-    }
-    );
-  }
-*/
+
 }
